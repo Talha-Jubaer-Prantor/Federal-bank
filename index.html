@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federal Bank</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/1a56f73e1c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div id="login-area">
+        <h1 class="text-center">Welcome to Federal Bank</h1>
+    
+        <div class="submit-area">
+        <h4>Login</h4>
+        <input type="text" class="form-control" placeholder="Email">
+        <br>
+        <input type="password" class="form-control" placeholder="Password">
+        <br>
+        <button id="login" class="btn btn-success">Enter</button>
+    </div>
+    </div>
+
+    <div id="tramsiction-area">
+        <div class="row">
+            <div class="col-md-4">
+            <div class="diposite status">
+                <h4>Diposite</h4>
+                <h5>$ <span id="currentDiposite">00</span> </h5>
+            </div>
+            </div>
+        
+
+
+            <div class="col-md-4">
+            <div class="withdraw status">
+                <h4>Withdraw</h4>
+                <h5>$ <span id="currentWithdraw">00</span> </h5>
+            </div>
+            </div>
+
+
+             <div class="col-md-4">
+            <div class="balance status">
+            <h4>Balance</h4>
+            <h5>$ <span id="totalDiposite">1240</span> </h5>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Diposite</h4>
+                    <br>
+                    <input type="text" id="dipositeAmount" class="form-control" placeholder="$ amount you want to diposite">
+                    <br>
+                    <button class="btn btn-success" id="dipositeBtn">Diposite</button>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Withdraw</h4>
+                    <br>
+                    <input type="text" id="withdrawAmount" class="form-control" placeholder="$ amount you want to diposite">
+                    <br>
+                    <button class="btn btn-success" id="withdrawBtn">Withdraw</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+
+
+
+
+    <script>
+// Login btn click holder
+
+        var loginBtn=document.getElementById('login')
+        loginBtn.addEventListener("click",function(){
+            const loginArea=document.getElementById('login-area')
+            loginArea.style.display="none"
+            const tramsictionArea=document.getElementById("tramsiction-area")
+            tramsictionArea.style.display="block"
+        })
+
+// Diposite btn click holder
+ var addDiposite=document.getElementById('dipositeBtn')
+ addDiposite.addEventListener('click', function() {
+     var dipositeAmount=document.getElementById('dipositeAmount').value
+     var dipositeNumber=parseFloat(dipositeAmount)
+
+
+    var currentDiposite=document.getElementById('currentDiposite').innerText
+    var currentDipositeNumber=parseFloat(currentDiposite)
+    var totalAmount=dipositeNumber+currentDipositeNumber
+    var currentDiposite=document.getElementById('currentDiposite').innerText=totalAmount
+
+    var totalDiposite=document.getElementById('totalDiposite').innerText
+    var totalDipositeNumber=parseFloat(totalDiposite)
+    var totalResult=dipositeNumber+totalDipositeNumber
+    document.getElementById('totalDiposite').innerText=totalResult
+
+    document.getElementById('dipositeAmount').value=""
+ })
+
+
+//  Withdraw Btn click holder
+    var addWithdraw=document.getElementById("withdrawBtn")
+    addWithdraw.addEventListener('click',function() {
+        const withdrawAmount=document.getElementById('withdrawAmount').value
+        const withdrawAmountNumber=parseFloat(withdrawAmount)
+       
+
+        const currentWithdraw=document.getElementById('currentWithdraw').innerText
+        const currentWithdrawNumber=parseFloat(currentWithdraw)
+        const totalWithdraw=withdrawAmountNumber+currentWithdrawNumber
+        document.getElementById('currentWithdraw').innerText=totalWithdraw
+        document.getElementById('withdrawAmount').value=""
+
+        
+        const balance=document.getElementById('totalDiposite').innerText
+        const balanceNumber=parseFloat(balance)
+        const totalBalance=balanceNumber-withdrawAmountNumber
+        document.getElementById('totalDiposite').innerText=totalBalance
+        
+    })
+
+
+    
+     
+
+ 
+
+    </script>
+</body>
+</html>
